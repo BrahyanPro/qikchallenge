@@ -1,3 +1,4 @@
+import { MovieDetails } from '@/types/MovieDetails';
 import { Movie } from '@/types/Movies';
 
 const API_URL = 'https://api.themoviedb.org/3';
@@ -21,4 +22,8 @@ const fetchFromMovieDB = async (endpoint: string, params: Record<string, string>
 export const getNowPlayingMovies = async (): Promise<Movie[]> => {
   const data = await fetchFromMovieDB('movie/now_playing', { page: '1' });
   return data.results;
+};
+
+export const getMovieDetails = async (movieId: number): Promise<MovieDetails> => {
+  return fetchFromMovieDB(`movie/${movieId}`, { append_to_response: 'credits' });
 };

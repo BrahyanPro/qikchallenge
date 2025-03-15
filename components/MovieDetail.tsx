@@ -2,9 +2,12 @@ import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { MovieDetails } from '@/types/MovieDetails';
 import { useMovieRating } from '@/hooks/useMovieRating';
 import StarRating from './StarRating';
+import MovieSuggestions from './MovieSuggestions';
+import { useMovieSuggestions } from '@/hooks/useMovieSuggestions';
 
 export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
-  const { rateMovie, isLoading } = useMovieRating(movie?.id);
+  const { rateMovie } = useMovieRating(movie?.id);
+  const { similarMovies, recommendedMovies, isLoading } = useMovieSuggestions(movie?.id);
 
   if (!movie) {
     return (
@@ -76,6 +79,16 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
           </View>
         ))}
       </ScrollView>
+
+      {/* Películas Similares / Recomendadas */}
+      {isLoading ? (
+        <View className='mt-6'>
+          <ActivityIndicator size='large' color='#ffffff' />
+          <Text className='text-white text-center mt-4'>Buscando recomendaciones...</Text>
+        </View>
+      ) : (
+        <MovieSuggestions similarMovies={similarMovies} recommendedMovies={recommendedMovies} />
+      )}
     </ScrollView>
   );
 }

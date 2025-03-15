@@ -4,6 +4,7 @@ import { useMovieRating } from '@/hooks/useMovieRating';
 import StarRating from './StarRating';
 import MovieSuggestions from './MovieSuggestions';
 import { useMovieSuggestions } from '@/hooks/useMovieSuggestions';
+import FavoriteButton from './FavoriteButton';
 
 export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
   const { rateMovie } = useMovieRating(movie?.id);
@@ -30,7 +31,10 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
 
       {/* Información principal */}
       <View className='p-4 bg-gray-800 rounded-lg shadow-lg'>
-        <Text className='text-white text-3xl font-bold'>{movie.title}</Text>
+        <View className='flex-row justify-between items-center'>
+          <Text className='text-white text-3xl font-bold'>{movie.title}</Text>
+          <FavoriteButton movie={movie} />
+        </View>
         <Text className='text-gray-400 text-lg'>🗓 {movie.release_date.split('-')[0]}</Text>
         <Text className='text-yellow-400 text-lg'>⭐ {movie.vote_average.toFixed(1)}</Text>
         <Text className='text-gray-300 text-lg mt-2'>{movie.overview}</Text>

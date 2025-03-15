@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { Heart } from 'lucide-react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -32,6 +33,13 @@ export default function TabLayout() {
         options={{
           title: 'Cartelera',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name='film' color={color} />
+        }}
+      />
+      <Tabs.Screen
+        name='favorites'
+        options={{
+          title: 'Favoritos',
+          tabBarIcon: ({ color }) => <Heart size={24} color={color} />
         }}
       />
     </Tabs>

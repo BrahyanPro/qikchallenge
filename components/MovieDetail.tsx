@@ -1,7 +1,11 @@
 import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { MovieDetails } from '@/types/MovieDetails';
+import { useMovieRating } from '@/hooks/useMovieRating';
+import StarRating from './StarRating';
 
 export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
+  const { rateMovie, isLoading } = useMovieRating(movie?.id);
+
   if (!movie) {
     return (
       <View className='flex-1 items-center justify-center bg-gray-900'>
@@ -37,6 +41,10 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
           </View>
         ))}
       </View>
+
+      {/* Calificación */}
+      <Text className='text-white text-xl font-bold mt-6'>📊 Califica esta película:</Text>
+      <StarRating onRate={rating => rateMovie(rating)} />
 
       {/* Información extra */}
       <View className='mt-6 bg-gray-800 p-4 rounded-lg shadow-lg'>

@@ -74,3 +74,15 @@ export const rateMovie = async (
     { guest_session_id: sessionId, api_key: API_KEY }
   );
 };
+
+// Obtener películas similares
+export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
+  const data = await get<{ results: Movie[] }>(`movie/${movieId}/similar`, { page: '1' });
+  return data.results;
+};
+
+// Obtener películas recomendadas
+export const getRecommendedMovies = async (movieId: number): Promise<Movie[]> => {
+  const data = await get<{ results: Movie[] }>(`movie/${movieId}/recommendations`, { page: '1' });
+  return data.results;
+};

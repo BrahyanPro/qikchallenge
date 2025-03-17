@@ -8,12 +8,12 @@ import FavoriteButton from './FavoriteButton';
 import SkeletonLoader from './ui/SkeletonLoader';
 
 export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
+  const { rateMovie } = useMovieRating(movie?.id);
+  const { similarMovies, recommendedMovies, isLoading } = useMovieSuggestions(movie?.id);
+
   if (!movie) {
     return <SkeletonLoader />;
   }
-
-  const { rateMovie } = useMovieRating(movie?.id);
-  const { similarMovies, recommendedMovies, isLoading } = useMovieSuggestions(movie?.id);
 
   return (
     <ScrollView className='p-4'>

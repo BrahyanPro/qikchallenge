@@ -8,12 +8,12 @@ import FavoriteButton from './FavoriteButton';
 import SkeletonLoader from './ui/SkeletonLoader';
 
 export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
-  const { rateMovie } = useMovieRating(movie?.id);
-  const { similarMovies, recommendedMovies, isLoading } = useMovieSuggestions(movie?.id);
-
   if (!movie) {
     return <SkeletonLoader />;
   }
+
+  const { rateMovie } = useMovieRating(movie?.id);
+  const { similarMovies, recommendedMovies, isLoading } = useMovieSuggestions(movie?.id);
 
   return (
     <ScrollView className='p-4'>
@@ -21,14 +21,14 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
       {movie.backdrop_path && (
         <Image
           source={{ uri: `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` }}
-          className='w-full h-56 rounded-lg mb-4'
+          className='w-full h-72 rounded-lg mb-4'
         />
       )}
 
       {/* Información principal */}
-      <View className='p-4 bg-gray-800 rounded-lg shadow-lg'>
+      <View className='p-4 bg-gray-800 rounded-lg shadow-xl'>
         <View className='flex-row justify-between items-center'>
-          <Text className='text-white text-3xl font-bold'>{movie.title}</Text>
+          <Text className='text-white text-3xl font-semibold'>{movie.title}</Text>
           <FavoriteButton movie={movie} />
         </View>
         <Text className='text-gray-400 text-lg'>🗓 {movie.release_date.split('-')[0]}</Text>
@@ -39,7 +39,7 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
       {/* Géneros */}
       <View className='mt-4 flex-row flex-wrap'>
         {movie.genres.map(genre => (
-          <View key={genre.id} className='bg-blue-600 px-3 py-1 rounded-full m-1 shadow'>
+          <View key={genre.id} className='bg-blue-600 px-4 py-2 rounded-full m-1 shadow-xl'>
             <Text className='text-white text-sm'>{genre.name}</Text>
           </View>
         ))}
@@ -50,8 +50,8 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
       <StarRating onRate={rating => rateMovie(rating)} />
 
       {/* Información extra */}
-      <View className='mt-6 bg-gray-800 p-4 rounded-lg shadow-lg'>
-        <Text className='text-white text-xl font-bold'>Información</Text>
+      <View className='mt-6 bg-gray-800 p-4 rounded-lg shadow-xl'>
+        <Text className='text-white text-xl font-semibold'>Información</Text>
         <Text className='text-gray-400'>⏳ Duración: {movie.runtime} min</Text>
         <Text className='text-gray-400'>
           🌎 País: {movie.production_countries.map(c => c.name).join(', ')}
@@ -72,9 +72,9 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
                   ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
                   : 'https://via.placeholder.com/185'
               }}
-              className='w-24 h-24 rounded-full shadow-lg'
+              className='w-24 h-24 rounded-full shadow-xl'
             />
-            <Text className='text-white text-sm font-bold mt-2'>{actor.name}</Text>
+            <Text className='text-white text-sm font-semibold mt-2'>{actor.name}</Text>
             <Text className='text-gray-400 text-xs'>{actor.character}</Text>
           </View>
         ))}

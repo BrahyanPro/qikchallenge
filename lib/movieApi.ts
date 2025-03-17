@@ -9,9 +9,16 @@ export const getNowPlayingMovies = async (): Promise<Movie[]> => {
 };
 
 // Obtener detalles de una película
-export const getMovieDetails = async (movieId: number): Promise<MovieDetails | null> => {
-  const data = await get<MovieDetails>(`movie/${movieId}`, { append_to_response: 'credits' });
-  return data || null;
+export const getMovieDetails = async (movieId: number): Promise<MovieDetails> => {
+  try {
+    const data = await get<MovieDetails>(`movie/${movieId}`, { append_to_response: 'credits' });
+    if (!data) {
+      throw new Error('No se pudo obtener los detalles de la película.');
+    }
+    return data;
+  } catch (error) {
+    throw new Error(`Error al obtener los detalles de la película: ${error}`);
+  }
 };
 
 // Obtener sesión de invitado (necesaria para votar)

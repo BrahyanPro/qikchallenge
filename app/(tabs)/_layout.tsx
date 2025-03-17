@@ -3,11 +3,10 @@ import React from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { Heart } from 'lucide-react-native';
+import { Heart, Home } from 'lucide-react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -32,7 +31,7 @@ export default function TabLayout() {
         name='index'
         options={{
           title: 'Cartelera',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name='film' color={color} />
+          tabBarIcon: ({ color }) => <Home size={24} color={color} />
         }}
       />
       <Tabs.Screen

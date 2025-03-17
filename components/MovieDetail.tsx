@@ -5,18 +5,14 @@ import StarRating from './StarRating';
 import MovieSuggestions from './MovieSuggestions';
 import { useMovieSuggestions } from '@/hooks/useMovieSuggestions';
 import FavoriteButton from './FavoriteButton';
+import SkeletonLoader from './ui/SkeletonLoader';
 
 export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
   const { rateMovie } = useMovieRating(movie?.id);
   const { similarMovies, recommendedMovies, isLoading } = useMovieSuggestions(movie?.id);
 
   if (!movie) {
-    return (
-      <View className='flex-1 items-center justify-center bg-gray-900'>
-        <ActivityIndicator size='large' color='#ffffff' />
-        <Text className='text-white mt-4'>Cargando detalles...</Text>
-      </View>
-    );
+    return <SkeletonLoader />;
   }
 
   return (

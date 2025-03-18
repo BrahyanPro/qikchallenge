@@ -1,5 +1,6 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { User } from 'lucide-react-native';
+import { MovieDetails } from '@/types/MovieDetails';
 
 interface ActorProfileProps {
   actor: {
@@ -37,4 +38,25 @@ const ActorProfile = ({ actor }: ActorProfileProps) => {
   );
 };
 
-export default ActorProfile;
+const ActorProfiles = ({ movie }: { movie: MovieDetails }) => {
+  return (
+    <>
+      {movie.credits?.cast.length > 0 ? (
+        <>
+          <Text className='text-white text-xl font-bold mt-6'>🎭 Actores</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} className='mt-4'>
+            {movie.credits.cast.slice(0, 10).map(actor => (
+              <ActorProfile key={actor.id} actor={actor} />
+            ))}
+          </ScrollView>
+        </>
+      ) : (
+        <Text className='text-gray-400 text-sm mt-4'>
+          No se encontraron actores para esta película.
+        </Text>
+      )}
+    </>
+  );
+};
+
+export default ActorProfiles;

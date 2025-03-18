@@ -15,6 +15,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
 
   return (
     <Pressable
+      testID='movie-card-pressable'
       onPress={() => router.push(`/movie/${movie.id}`)}
       className='mb-6 mx-4'
       style={{
@@ -27,6 +28,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <View className='rounded-2xl overflow-hidden bg-gray-950'>
         <Image
+          testID='movie-poster-image'
           source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
           className='w-full h-96 rounded-t-2xl'
           resizeMode='cover'

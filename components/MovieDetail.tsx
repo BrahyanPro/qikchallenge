@@ -31,7 +31,7 @@ export default function MovieDetail({ movie }: { movie?: MovieDetails }) {
           className='w-full h-48 rounded-lg mb-4'
         />
       ) : (
-        <View className='w-full h-48 bg-gray-600 rounded-lg mb-4' /> // Fondo gris si no hay imagen de fondo
+        <View testID='fallback-image' className='w-full h-48 bg-gray-600 rounded-lg mb-4' /> // Fondo gris si no hay imagen de fondo
       )}
 
       {/* Información principal */}

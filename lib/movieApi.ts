@@ -1,5 +1,5 @@
 import { MovieDetails } from '@/types/MovieDetails';
-import { Movie } from '@/types/Movies';
+import { Movie, MovieRating } from '@/types/Movies';
 import { get, post } from './apiUtils';
 
 // Obtener películas en cartelera
@@ -46,12 +46,9 @@ export const getUserRating = async (movieId: number, sessionId: string) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/guest_session/${sessionId}/rated/movies?&api_key=${process.env.EXPO_PUBLIC_API_KEY}`
   );
-  if (!response.ok) {
-    throw new Error('Error al obtener la calificación del usuario');
-  }
-  const data = await response.json();
-  const movieRating = data.results.find((movie: { id: number }) => movie.id === movieId);
-  return movieRating.rating || null;
+  const data = await get<{ results: MovieRating[] }>(`guest_session/${sessionId}/rated/movies`);
+  const movieRating = data?.results?.find((movie: { id: number }) => movie.id === movieId);
+  return movieRating?.rating || null;
 };
 
 // Obtener películas similares

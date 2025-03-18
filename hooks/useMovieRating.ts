@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { rateMovie, getGuestSession, getMovieDetails, getUserRating } from '@/lib/movieApi';
-import { useEffect, useState } from 'react';
+import { rateMovie, getMovieDetails, getUserRating } from '@/lib/movieApi';
+import { useState, useEffect } from 'react';
 import { useGuestSession } from './useGuestSession';
 
 export const useMovieRating = (movieId: number | undefined) => {
@@ -12,31 +12,26 @@ export const useMovieRating = (movieId: number | undefined) => {
     };
   }
 
-  const queryClient = useQueryClient();
-  const [currentRating, setCurrentRating] = useState<number | null>(null);
   const { guestSessionId } = useGuestSession();
+  const [currentRating, setCurrentRating] = useState<number | null>(null);
 
-  // Obtener detalles de la película y la calificación personal del usuario
   useEffect(() => {
-    const fetchMovieDetailsAndRating = async () => {
+    const fetchPersonalMovieRating = async () => {
       try {
-        // Obtener los detalles de la película
-        const movieDetails = await getMovieDetails(movieId);
-        // Si existe la sesión, obtener la calificación personal del usuario
+        // Obtener la calificación del usuario
         if (guestSessionId) {
           const userRating = await getUserRating(movieId, guestSessionId);
-          if (userRating !== null) {
-            setCurrentRating(userRating);
-          } else if (movieDetails.vote_average) {
-            setCurrentRating(movieDetails.vote_average); // Usar la calificación promedio si no hay calificación personal
-          }
+          setCurrentRating(userRating !== null ? userRating : 0);
+        } else {
+          setCurrentRating(0);
         }
       } catch (error) {
-        console.error('Failed to fetch movie details and user rating:', error);
+        console.error('Error fetching movie details and rating:', error);
       }
     };
+
     if (guestSessionId) {
-      fetchMovieDetailsAndRating();
+      fetchPersonalMovieRating();
     }
   }, [movieId, guestSessionId]);
 
@@ -45,15 +40,12 @@ export const useMovieRating = (movieId: number | undefined) => {
       if (!guestSessionId) throw new Error('No session ID available');
       return rateMovie(movieId, rating, guestSessionId);
     },
-    onSuccess: (_data, variables) => {
-      queryClient.invalidateQueries({ queryKey: ['movieDetails', movieId] });
-      setCurrentRating(variables); // Actualizar la calificación cuando el usuario califica
-    }
+    onSuccess: (_data, variables) => setCurrentRating(variables) // Actualiza la calificación después de calificar
   });
 
   return {
     rateMovie: mutation.mutate,
     currentRating,
-    isLoading: mutation.isPending // Cambié de isLoading a isPending
+    isLoading: mutation.isPending
   };
 };

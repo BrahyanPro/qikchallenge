@@ -32,7 +32,13 @@ export const get = async <T>(
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Error en la API: ${response.statusText}`);
+      const errorData = await response.json();
+      if (errorData.status_code === 34) {
+        // Si no hay películas calificadas, devolver un array vacío
+        return [] as T;
+      } else {
+        throw new Error(`Error en la API: ${response.statusText}`);
+      }
     }
 
     return response.json() as T;

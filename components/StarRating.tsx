@@ -28,7 +28,7 @@ export default function StarRating({ onRate, selectedRating }: StarRatingProps) 
             <Star
               size={32}
               color={star <= (selected ?? 0) ? '#FFD700' : '#666'}
-              fill={star <= (selected ?? 0) ? '#FFD700' : 'none'}
+              fill={star <= (selected ?? 0) ? '#FFD700' : 'transparent'}
               className='mx-1'
             />
           </Pressable>

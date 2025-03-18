@@ -2,6 +2,8 @@ import { MovieDetails } from '@/types/MovieDetails';
 import { Movie, MovieRating } from '@/types/Movies';
 import { get, post } from './apiUtils';
 
+//Podria hacer una clase, pero es mejor asi siuuuuuuuuuuuuuuuuuuuuuuuu, es mas estetico la verdad y más facil de leer
+
 // Obtener películas en cartelera
 export const getNowPlayingMovies = async (): Promise<Movie[]> => {
   const data = await get<{ results: Movie[] }>('movie/now_playing', { page: '1' });

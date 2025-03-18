@@ -37,7 +37,7 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack screenOptions={{ animation: 'fade' }}>
-          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+          <Stack.Screen name='(tabs)' options={{ headerShown: false, title: 'Inicio' }} />
           <Stack.Screen name='movie/[id]' options={{ title: 'Detalles de Película' }} />
           <Stack.Screen name='+not-found' />
         </Stack>

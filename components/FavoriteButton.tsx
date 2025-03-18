@@ -11,14 +11,7 @@ export default function FavoriteButton({ movie }: FavoriteButtonProps) {
   const { favorites, addFavorite, removeFavorite } = useFavoritesStore();
   const isFavorite = favorites.some(fav => fav.id === movie.id);
 
-  const toggleFavorite = () => {
-    if (isFavorite) {
-      removeFavorite(movie.id);
-    } else {
-      addFavorite(movie);
-    }
-  };
-
+  const toggleFavorite = () => (isFavorite ? removeFavorite(movie.id) : addFavorite(movie));
   return (
     <Pressable
       onPress={toggleFavorite}
@@ -27,9 +20,11 @@ export default function FavoriteButton({ movie }: FavoriteButtonProps) {
       <Heart
         size={24}
         color={isFavorite ? '#ff5252' : '#fff'}
-        fill={isFavorite ? '#ff5252' : 'none'}
+        fill={isFavorite ? '#ff5252' : 'transparent'}
       />
       <Text className='text-white ml-2'>{isFavorite ? 'Quitar' : 'Añadir'}</Text>
     </Pressable>
   );
 }
+
+type FavoriteButtton = Omit<Movie, ''>;

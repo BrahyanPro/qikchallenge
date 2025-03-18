@@ -50,6 +50,13 @@ export interface CastMember {
   character: string;
   profile_path: string | null;
   order: number;
+  adult: boolean;
+  gender: number;
+  known_for_department: string;
+  original_name: string;
+  popularity: number;
+  cast_id: number;
+  credit_id: string;
 }
 
 export interface CrewMember {

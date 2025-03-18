@@ -41,6 +41,19 @@ export const rateMovie = async (
   );
 };
 
+export const getUserRating = async (movieId: number, sessionId: string) => {
+  //https://api.themoviedb.org/3/guest_session/{guest_session_id}/rated/movies
+  const response = await fetch(
+    `https://api.themoviedb.org/3/guest_session/${sessionId}/rated/movies?&api_key=${process.env.EXPO_PUBLIC_API_KEY}`
+  );
+  if (!response.ok) {
+    throw new Error('Error al obtener la calificación del usuario');
+  }
+  const data = await response.json();
+  const movieRating = data.results.find((movie: { id: number }) => movie.id === movieId);
+  return movieRating.rating || null;
+};
+
 // Obtener películas similares
 export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
   const data = await get<{ results: Movie[] }>(`movie/${movieId}/similar`, { page: '1' });

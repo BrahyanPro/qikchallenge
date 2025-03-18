@@ -40,6 +40,8 @@ Asegurate de tener expo cli instalado, o sigue este tutorial, es la ultima versi
   Tu navegador no soporta el elemento de video.
 </video>
 
+[Ver video de simulación](https://pub-ed511a27502b4dddaec009ba0b6b183c.r2.dev/Simulator%20Screen%20Recording%20-%20iPhone%2016%20Pro%20-%202025-03-18%20at%2005.43.36.mp4)
+
 <!-- Imagen -->
 
 ![Alt text](/assets/media/mockup.jpeg?raw=true 'Aplicación')

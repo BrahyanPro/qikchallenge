@@ -20,13 +20,19 @@ npm install
 npm start
 ```
 
+Crear archivo `.env.local` en la raíz del proyecto con la siguiente información:
+
+```env
+EXPO_PUBLIC_API_KEY='Tu API Key'
+```
+
 Asegurate de tener expo cli instalado, o sigue este tutorial, es la ultima versión: [Yo tengo esto en mi mac](https://docs.expo.dev/get-started/set-up-your-environment/?platform=ios&device=simulated)
 
 ## Lo que veras cuando ejecutes la app
 
 <!-- Video -->
 <video width="100%" height="auto" controls>
-  <source src="/assets/media/video.mp4" type="video/mp4">
+  <source src="https://pub-ed511a27502b4dddaec009ba0b6b183c.r2.dev/Simulator%20Screen%20Recording%20-%20iPhone%2016%20Pro%20-%202025-03-18%20at%2005.43.36.mp4" type="video/mp4">
   Tu navegador no soporta el elemento de video.
 </video>
 

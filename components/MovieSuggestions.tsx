@@ -23,6 +23,7 @@ export default function MovieSuggestions({
             {similarMovies.map(movie => (
               <Pressable key={movie.id} onPress={() => router.push(`/movie/${movie.id}`)}>
                 <Image
+                  testID={`movie-poster-${movie.id}`}
                   source={{ uri: `https://image.tmdb.org/t/p/w200${movie.poster_path}` }}
                   className='w-32 h-48 rounded-lg mr-3'
                 />
@@ -40,6 +41,7 @@ export default function MovieSuggestions({
             {recommendedMovies.map(movie => (
               <Pressable key={movie.id} onPress={() => router.push(`/movie/${movie.id}`)}>
                 <Image
+                  testID={`movie-poster-${movie.id}`}
                   source={{ uri: `https://image.tmdb.org/t/p/w200${movie.poster_path}` }}
                   className='w-32 h-48 rounded-lg mr-3'
                 />

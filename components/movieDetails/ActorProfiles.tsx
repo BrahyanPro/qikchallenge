@@ -24,6 +24,7 @@ const ActorProfile = ({ actor }: ActorProfileProps) => {
     <View className='items-center mx-2'>
       {actor.profile_path ? (
         <Image
+          testID={`actor-image-${actor.id}`}
           source={{ uri: `https://image.tmdb.org/t/p/w185${actor.profile_path}` }}
           className='w-32 h-32 rounded-full shadow-xl border-4 border-gray-700'
         />

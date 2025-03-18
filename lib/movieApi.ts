@@ -7,7 +7,7 @@ import { get, post } from './apiUtils';
 // Obtener películas en cartelera
 export const getNowPlayingMovies = async (): Promise<Movie[]> => {
   const data = await get<{ results: Movie[] }>('movie/now_playing', { page: '1' });
-  return data?.results || [];
+  return data?.results.sort((a, b) => a.title.localeCompare(b.title)) || [];
 };
 
 // Obtener detalles de una película

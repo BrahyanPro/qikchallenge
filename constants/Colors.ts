@@ -1,36 +1,26 @@
-// Define primary and secondary colors based on modern design trends
-const primaryColorLight = '#1C74B6'; // A strong, vibrant blue that catches the eye
-const primaryColorDark = '#3A8D99'; // A slightly muted blue for dark mode
+/**
+ * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
+ * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ */
 
-const secondaryColorLight = '#FF6F61'; // A warm coral red for accents
-const secondaryColorDark = '#FF8B7E'; // A muted coral for dark mode
-
-const backgroundLight = '#FAFAFA'; // A soft, light background color
-const backgroundDark = '#121212'; // A true dark mode color, deep enough for eye comfort
-
-const textLight = '#333333'; // Dark text for high contrast and readability
-const textDark = '#ECEDEE'; // Light grayish text for dark mode, making it less harsh than white
-
-const iconLight = '#9E9E9E'; // Neutral icon color for light mode
-const iconDark = '#C1C1C1'; // A light gray for icons in dark mode, still visible but not too bright
+const tintColorLight = '#0a7ea4';
+const tintColorDark = '#fff';
 
 export const Colors = {
   light: {
-    text: textLight,
-    background: backgroundLight,
-    tint: primaryColorLight,
-    icon: iconLight,
-    tabIconDefault: iconLight,
-    tabIconSelected: primaryColorLight,
-    secondary: secondaryColorLight // For secondary actions or accents
+    text: '#11181C',
+    background: '#fff',
+    tint: tintColorLight,
+    icon: '#687076',
+    tabIconDefault: '#687076',
+    tabIconSelected: tintColorLight,
   },
   dark: {
-    text: textDark,
-    background: backgroundDark,
-    tint: primaryColorDark,
-    icon: iconDark,
-    tabIconDefault: iconDark,
-    tabIconSelected: primaryColorDark,
-    secondary: secondaryColorDark // For secondary actions or accents in dark mode
-  }
+    text: '#ECEDEE',
+    background: '#151718',
+    tint: tintColorDark,
+    icon: '#9BA1A6',
+    tabIconDefault: '#9BA1A6',
+    tabIconSelected: tintColorDark,
+  },
 };

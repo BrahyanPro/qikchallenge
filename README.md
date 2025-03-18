@@ -1,50 +1,35 @@
-# Welcome to your Expo app 👋
+# Brahyan Pro - Quick Challenge
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+🛠️ Tecnologías Usadas
+React Native: Porque, quién no quiere un solo código que corre en Android y iOS sin tener que hacer magia o sacrificios, nah mentira es que es el requisito de la prueba.
 
-## Get started
+Expo: El más guapo de todos.Solo un comando y listo, ya puedes ver tu app en el móvil, por esa eficiencia lo escogi sobre hacerlo de forma local.
 
-1. Install dependencies
+React Query: Para que las consultas a la API sean fáciles, rápidas y, sobre todo, se encargue de las cachés y el estado de los datos como un adulto responsable. Hablando enserio es una locura esta libreria.
 
-   ```bash
-   npm install
-   ```
+TailwindCSS + NativeWind: NativeWind trae el poder de Tailwind a React Native. ¿Por qué escribir clases de CSS cuando puedes ponerlas directamente en el JSX? Es como magia, pero mejor a mucha gente no le gusta pero como el pdf decia que el cliente lo quiere rapido, con tailwind la velocidad es 2X.
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+🚀 Cómo Ejecutar
+Instalar dependencias:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+```bash
+npm start
+```
 
-## Learn more
+Asegurate de tener expo cli instalado, o sigue este tutorial, es la ultima versión: [Yo tengo esto en mi mac](https://docs.expo.dev/get-started/set-up-your-environment/?platform=ios&device=simulated)
 
-To learn more about developing your project with Expo, look at the following resources:
+## Lo que veras cuando ejecutes la app
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+<!-- Video -->
+<video width="100%" height="auto" controls>
+  <source src="/assets/media/videoapp.mp4" type="video/mp4">
+  Tu navegador no soporta el elemento de video.
+</video>
 
-## Join the community
+<!-- Imagen -->
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+![Alt text](/assets/media/mockup.jpeg?raw=true 'Aplicación')

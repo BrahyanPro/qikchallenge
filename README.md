@@ -26,7 +26,7 @@ Asegurate de tener expo cli instalado, o sigue este tutorial, es la ultima versi
 
 <!-- Video -->
 <video width="100%" height="auto" controls>
-  <source src="/assets/media/videoapp.mp4" type="video/mp4">
+  <source src="/assets/media/video.mp4" type="video/mp4">
   Tu navegador no soporta el elemento de video.
 </video>
 

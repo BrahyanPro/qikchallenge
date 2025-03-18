@@ -43,9 +43,6 @@ export const rateMovie = async (
 
 export const getUserRating = async (movieId: number, sessionId: string) => {
   //https://api.themoviedb.org/3/guest_session/{guest_session_id}/rated/movies
-  const response = await fetch(
-    `https://api.themoviedb.org/3/guest_session/${sessionId}/rated/movies?&api_key=${process.env.EXPO_PUBLIC_API_KEY}`
-  );
   const data = await get<{ results: MovieRating[] }>(`guest_session/${sessionId}/rated/movies`);
   const movieRating = data?.results?.find((movie: { id: number }) => movie.id === movieId);
   return movieRating?.rating || null;
